@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+    <style>
+      body {
+        /*background-color: blue;*/
+      }
+      .section {
+        margin: 50px;
+      }
+    </style>
+    <title>input data</title>
+  </head>
+  <body>
+    <div class="section text-center">
+      <div class="inputan border p-3">
+        <input type="text" id="inputan" placeholder="masukkan kalimat" />
+        <button type="submit" onclick="tambahkan()">add</button>
+      </div>
+
+      <ul class="list-group" id="output"></ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+      function tambahkan() {
+        var inputan = document.getElementById("inputan");
+        var output = document.getElementById("output");
+
+        if (inputan.value.trim() !== "") {
+          var listitem = document.createElement("li");
+          listitem.className = "list-group-item";
+          listitem.innerHTML = inputan.value + "<button class='btn btn-primary btn-sm float-end' onclick='deleteTask(this)'>Delete</button> <button class='btn btn-danger me-3 btn-sm float-end' onclick='editTask(this)'>Edit</button>";
+          output.appendChild(listitem);
+          inputan.value = "";
+        }
+      }
+
+      function deleteTask(button) {
+        var output = document.getElementById("output");
+        output.removeChild(button.parentElement);
+      }
+
+      function editTask(button) {
+        var output = document.getElementById("output");
+        var edittasks = prompt("edit task: ", button.parentElement.firstChild.textContent);
+        if (edittasks.trim() !== "") {
+          button.parentElement.firstChild.textContent = edittasks;
+        }
+      }
+    </script>
+  </body>
+</html>

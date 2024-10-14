@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+    <style>
+      .border:nth-child(4) {
+        background-color: rgb(174, 0, 255);
+      }
+      .border:nth-child(3),
+      .border:nth-child(2),
+      .border:nth-child(1) {
+        background-color: rgb(94, 129, 160);
+      }
+      button {
+        background: none; /* Menghilangkan latar belakang */
+        border: none; /* Menghilangkan border */
+        color: inherit; /* Mengambil warna teks dari elemen induk */
+        font: inherit; /* Mengambil font dari elemen induk */
+        cursor: default; /* Mengubah cursor menjadi default */
+        padding: 0; /* Menghilangkan padding */
+        margin: 0; /* Menghilangkan margin */
+        text-align: left; /* Menyelaraskan teks ke kiri (opsional) */
+      }
+    </style>
+    <title>Kalkulator</title>
+  </head>
+  <body>
+    <h1>KALKULATOR MINI</h1>
+
+    <div class="containter text-center ps-5 pe-5">
+      <div class="row ps-5 pe-5">
+        <input type="number" id="input" class="p-4 text-end" style="background-color: rgb(94, 129, 160)" />
+      </div>
+      <div class="row ps-5 pe-5">
+        <div class="col border"><button type="button" id="AC">AC</button></div>
+        <div class="col border"><button type="button" id="plusminus">+/-</button></div>
+        <div class="col border"><button type="button" id="persen">%</button></div>
+        <div class="col border"><button type="button" id="bagi">:</button></div>
+      </div>
+      <div class="row ps-5 pe-5">
+        <div class="col border"><button type="button" id="tujuh">7</button></div>
+        <div class="col border"><button type="button" id="delapan">8</button></div>
+        <div class="col border"><button type="button" id="sembilan">9</button></div>
+        <div class="col border"><button type="button" id="kali">X</button></div>
+      </div>
+      <div class="row ps-5 pe-5">
+        <div class="col border"><button type="button" id="empat">4</button></div>
+        <div class="col border"><button type="button" id="lima">5</button></div>
+        <div class="col border"><button type="button" id="enam">6</button></div>
+        <div class="col border"><button type="button" id="kurang">-</button></div>
+      </div>
+      <div class="row ps-5 pe-5">
+        <div class="col border"><button type="button" id="satu">1</button></div>
+        <div class="col border"><button type="button" id="dua">2</button></div>
+        <div class="col border"><button type="button" id="tiga">3</button></div>
+        <div class="col border"><button type="button" id="tambah">+</button></div>
+      </div>
+      <div class="row ps-5 pe-5">
+        <div class="col-6 border"><button type="button" id="nol">0</button></div>
+        <div class="col-3 border"><button type="button" id="titik">.</button></div>
+        <div class="col-3 border" style="background-color: rgb(174, 0, 255)"><button type="button">=</button></div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="kalkulator.js"></script>
+  </body>
+</html>

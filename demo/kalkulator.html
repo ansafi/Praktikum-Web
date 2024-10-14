@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Kalkulator</title>
+    <!-- Tambahkan link CSS Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background: rgb(2, 0, 36);
+            background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(2, 0, 36, 1) 0%, rgba(67, 67, 171, 1) 45%, rgba(0, 212, 255, 1) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .calculator {
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+        .btn {
+            width: 100%;
+            height: 60px;
+            margin: 5px 0;
+            font-size: 20px;
+        }
+
+        #display {
+            text-align: right;
+            font-size: 24px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class=" col-md-6 offset-md-3 col-12 ">
+                <div class="calculator">
+                    <h1 class="pb-3" style="text-align: center;">CALCULATOR</h1>
+                    <input type="text" id="display" class="form-control mb-2" readonly>
+                    <div class="row">
+                        <div class="col-12 m-auto"><button class="btn btn-light" onclick="clearDisplay()">C/CE</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3"><button class="btn btn-light" onclick="appendToDisplay('7')">7</button></div>
+                        <div class="col-3"><button class="btn btn-light" onclick="appendToDisplay('8')">8</button></div>
+                        <div class="col-3"><button class="btn btn-light" onclick="appendToDisplay('9')">9</button></div>
+                        <div class="col-3"><button class="btn btn-info" onclick="appendToDisplay('+')">+</button></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3"><button class="btn btn-light" onclick="appendToDisplay('4')">4</button></div>
+                        <div class="col-3"><button class="btn btn-light" onclick="appendToDisplay('5')">5</button></div>
+                        <div class="col-3"><button class="btn btn-light" onclick="appendToDisplay('6')">6</button></div>
+                        <div class="col-3"><button class="btn btn-info" onclick="appendToDisplay('-')">-</button></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3"><button class="btn btn-light" onclick="appendToDisplay('1')">1</button></div>
+                        <div class="col-3"><button class="btn btn-light" onclick="appendToDisplay('2')">2</button></div>
+                        <div class="col-3"><button class="btn btn-light" onclick="appendToDisplay('3')">3</button></div>
+                        <div class="col-3"><button class="btn btn-info" onclick="appendToDisplay('')"></button></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3"><button class="btn btn-light" onclick="appendToDisplay('.')">.</button></div>
+                        <div class="col-3"><button class="btn btn-light" onclick="appendToDisplay('0')">0</button></div>
+                        <div class="col-3"><button class="btn btn-info" onclick="appendToDisplay('/')">/</button></div>
+                        <div class="col-3"><button class="btn btn-info" onclick="appendToDisplay('%')">%</button></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3"><button class="btn btn-info" onclick="appendToDisplay('^')">^</button></div>
+                        <div class="col-3"><button class="btn btn-info" onclick="calculateResult()">=</button></div>
+                        <div class="col-6"><button class="btn btn-danger" onclick="deleteLastCharacter()">DEL</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let operatorEntered = false; // Menyimpan status apakah operator sudah dimasukkan
+
+        function deleteLastCharacter() {
+            const display = document.getElementById('display');
+            if (display.value.charAt(display.value.length - 1) === '+' || 
+                display.value.charAt(display.value.length - 1) === '-' ||
+                display.value.charAt(display.value.length - 1) === '*' ||
+                display.value.charAt(display.value.length - 1) === '/' ||
+                display.value.charAt(display.value.length - 1) === '^' ||
+                display.value.charAt(display.value.length - 1) === '%') {
+                operatorEntered = false; // Reset status operator
+            }
+            display.value = display.value.slice(0, -1);
+        }
+
+        function appendToDisplay(value) {
+            if (value === '^') {
+                value = '**';
+            }
+            const display = document.getElementById('display');
+            if ((value === '+' || value === '-' || value === '*' || value === '/' || value === '%' || value === '^') && operatorEntered) {
+                return; // Jika operator sudah dimasukkan, keluar dari fungsi
+            }
+            if (value === '+' || value === '-' || value === '*' || value === '/' || value === '%' || value === '^') {
+                operatorEntered = true; // Tandai bahwa operator telah dimasukkan
+            }
+            display.value += value;
+        }
+
+        function calculateResult() {
+            try {
+                const result = eval(document.getElementById('display').value);
+                document.getElementById('display').value = result;
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+            operatorEntered = false; // Reset status operator saat layar dihapus
+        }
+    </script>
+
+    <!-- Tambahkan script Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+    <!-- Tambahkan script Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

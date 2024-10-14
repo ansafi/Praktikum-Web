@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .semua {
+        background-color: rgb(255, 217, 136);
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="semua">
+      <h2>Penjumlahan Dua Bilangan</h2>
+      <label for="num1">Masukkan bilangan pertama:</label>
+      <input type="number" id="num1" placeholder="bilangan pertama" />
+      <br /><br />
+
+      <label for="num2">Masukkan bilangan kedua:</label>
+      <input type="number" id="num2" placeholder="bilangan kedua" />
+      <br /><br />
+
+      <button onclick="jumlahkan()">Hitung</button>
+      <br /><br />
+
+      <p id="hasil">Hasil:</p>
+      <br />
+    </div>
+
+    <script>
+      function jumlahkan() {
+        // Mendapatkan nilai dari input
+        var bil1 = parseFloat(document.getElementById("num1").value);
+        var bil2 = parseFloat(document.getElementById("num2").value);
+
+        // Menjumlahkan dua bilangan
+        var hasil = bil1 + bil2;
+
+        // Menampilkan hasil
+        document.getElementById("hasil").innerHTML = "Hasil: " + hasil;
+      }
+    </script>
+  </body>
+</html>
